@@ -6,11 +6,16 @@
     <title>Lal Krishna | Automation Engineer</title>
 
     <style>
+        /* Base */
         body {
             margin: 0;
             background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
             color: #e5e5e5;
             font-family: "Segoe UI", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -60,6 +65,25 @@
 
         section {
             margin-top: 96px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        section:nth-of-type(1) {
+            animation-delay: 0.1s;
+        }
+
+        section:nth-of-type(2) {
+            animation-delay: 0.25s;
+        }
+
+        section:nth-of-type(3) {
+            animation-delay: 0.4s;
+        }
+
+        section:nth-of-type(4) {
+            animation-delay: 0.55s;
         }
 
         h2 {
@@ -89,34 +113,14 @@
             color: #cfcfcf;
             line-height: 1.6;
         }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
-
-    /* Smooth scrolling */
-    html {
-    scroll-behavior: smooth;
-    }
-
-    /* Fade-in animation */
-    section {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease forwards;
-    }
-
-    /* Stagger effect */
-    section:nth-of-type(1) { animation-delay: 0.1s; }
-    section:nth-of-type(2) { animation-delay: 0.25s; }
-    section:nth-of-type(3) { animation-delay: 0.4s; }
-    section:nth-of-type(4) { animation-delay: 0.55s; }
-
-    @keyframes fadeUp {
-    to {
-    opacity: 1;
-    transform: translateY(0);
-    }
-    }
-
-
 </head>
 
 <body>
@@ -130,12 +134,8 @@
         </p>
 
         <div class="links">
-            <a href="https://www.linkedin.com/in/lalkrishna-work/" target="_blank">
-                LinkedIn
-            </a>
-            <a href="https://github.com/lalkrishna-job" target="_blank">
-                GitHub
-            </a>
+            <a href="https://www.linkedin.com/in/lalkrishna-work/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/lalkrishna-job" target="_blank">GitHub</a>
         </div>
 
         <section>
@@ -161,40 +161,27 @@
 
         <section>
             <h2>Projects</h2>
-
             <p>
                 Below are some of the automation and backend testing projects
                 I have worked on as part of my learning and professional experience.
             </p>
-
             <ul>
-                <li>
-                    <strong>Backend Automation Framework</strong><br>
-                    Designed and implemented a scalable backend automation framework
-                    using Python and Robot Framework for microservices testing.
-                </li>
+                <li><strong>Backend Automation Framework</strong><br>
+                    Python + Robot Framework for microservices testing</li>
 
-                <li>
-                    <strong>REST API Automation</strong><br>
-                    Automated REST APIs covering positive, negative, and edge cases,
-                    including authentication, schema validation, and response verification.
-                </li>
+                <li><strong>REST API Automation</strong><br>
+                    Authentication, schema validation, edge cases</li>
 
-                <li>
-                    <strong>CI-Friendly Test Execution</strong><br>
-                    Integrated automation suites with CI pipelines to enable
-                    reliable and repeatable test execution.
-                </li>
+                <li><strong>CI-Friendly Execution</strong><br>
+                    Integrated with CI pipelines</li>
             </ul>
         </section>
-
 
         <section>
             <h2>Experience</h2>
             <p>
                 <strong>Automation Test Engineer — Backend Automation</strong><br>
-                Working on microservices testing, automation frameworks,
-                and CI quality improvements.
+                Microservices testing, automation frameworks, CI quality
             </p>
         </section>
 
