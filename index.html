@@ -1,144 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Lal Krishna K B | Senior SDET</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lal Krishna K B | Senior SDET</title>
 
-    <style>
-        body {
-            margin: 0;
-            background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
-            color: #e5e5e5;
-            font-family: "Segoe UI", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+<style>
+:root {
+    --bg-dark: #0b0d12;
+    --bg-glass: rgba(255, 255, 255, 0.06);
+    --border-glass: rgba(255, 255, 255, 0.12);
+    --text-main: #f5f7fa;
+    --text-muted: #b8bcc7;
+    --accent: #7c8cff;
+    --accent-soft: rgba(124, 140, 255, 0.25);
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 96px 24px;
-            text-align: center;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        h1 {
-            font-size: 52px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-            color: #f5f5f5;
-        }
+body {
+    margin: 0;
+    background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(124,140,255,0.18), transparent),
+        radial-gradient(800px 400px at 90% 10%, rgba(124,140,255,0.12), transparent),
+        var(--bg-dark);
+    color: var(--text-main);
+    font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+}
 
-        .subtitle {
-            font-size: 20px;
-            color: #bdbdbd;
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 100px 24px 60px;
+}
 
-        .tagline {
-            font-size: 18px;
-            color: #9ca3af;
-            margin-bottom: 64px;
-        }
+/* ---------------- HERO ---------------- */
 
-        .links {
-            margin-bottom: 88px;
-        }
+.hero {
+    text-align: center;
+    margin-bottom: 120px;
+}
 
-        .links a {
-            display: inline-block;
-            margin: 0 10px;
-            padding: 13px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            background-color: #2a2a2a;
-            color: #ffffff;
-            border: 1px solid #3a3a3a;
-            transition: all 0.25s ease;
-        }
+.hero h1 {
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+}
 
-        .links a:hover {
-            background-color: #3a3a3a;
-            transform: translateY(-2px);
-        }
+.hero h2 {
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+}
 
-        section {
-            margin-top: 96px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s ease forwards;
-        }
+.hero p {
+    max-width: 780px;
+    margin: auto;
+    font-size: 18px;
+    color: var(--text-muted);
+}
 
-        section:nth-of-type(1) { animation-delay: 0.1s; }
-        section:nth-of-type(2) { animation-delay: 0.25s; }
-        section:nth-of-type(3) { animation-delay: 0.4s; }
-        section:nth-of-type(4) { animation-delay: 0.55s; }
-        section:nth-of-type(5) { animation-delay: 0.7s; }
+.hero-actions {
+    margin-top: 40px;
+}
 
-        h2 {
-            font-size: 30px;
-            margin-bottom: 26px;
-            color: #eeeeee;
-            letter-spacing: -0.3px;
-        }
+.button {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), #9aa4ff);
+    color: #0b0d12;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 8px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-        p {
-            font-size: 18px;
-            line-height: 1.75;
-            color: #cfcfcf;
-            max-width: 760px;
-            margin: 0 auto;
-        }
+.button.secondary {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-glass);
+}
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 28px;
-            max-width: 760px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left;
-        }
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(124, 140, 255, 0.35);
+}
 
-        ul li {
-            font-size: 18px;
-            margin: 12px 0;
-            color: #cfcfcf;
-            line-height: 1.6;
-        }
+/* ---------------- SECTIONS ---------------- */
 
-        footer {
-            margin-top: 120px;
-            padding-top: 40px;
-            border-top: 1px solid #2a2a2a;
-            color: #a3a3a3;
-            font-size: 14px;
-        }
+section {
+    margin-bottom: 100px;
+}
 
-        footer a {
-            color: #d4d4d4;
-            text-decoration: none;
-            margin: 0 8px;
-            font-weight: 500;
-        }
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 36px;
+    letter-spacing: -0.01em;
+}
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+/* ---------------- GLASS CARD ---------------- */
 
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+.card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--border-glass);
+    border-radius: 18px;
+    padding: 32px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+/* ---------------- GRID ---------------- */
+
+.grid {
+    display: grid;
+    gap: 24px;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* ---------------- SKILLS ---------------- */
+
+.skill-group h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: var(--accent);
+}
+
+.skill-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-group li {
+    color: var(--text-muted);
+    margin: 6px 0;
+}
+
+/* ---------------- EXPERIENCE ---------------- */
+
+.role {
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.company {
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.role-desc {
+    color: var(--text-muted);
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer {
+    margin-top: 120px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-glass);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+footer a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+</style>
 </head>
 
 <body>
@@ -146,102 +203,125 @@
 <div class="container">
 
     <!-- HERO -->
-    <h1>Lal Krishna K B</h1>
-    <p class="subtitle">
-        Senior Software Development Engineer in Test (SDET)
-    </p>
-    <p class="tagline">
-        Backend API Automation • UI Automation • Microservices Quality
-    </p>
+    <div class="hero">
+        <h1>Lal Krishna K B</h1>
+        <h2>Senior Software Development Engineer in Test (SDET)</h2>
+        <p>
+            10+ years building automation-first quality for large-scale web,
+            mobile, and backend microservices. Deep expertise in API automation,
+            experimentation platforms, and CI/CD-aligned quality engineering.
+        </p>
 
-    <div class="links">
-        <a href="https://www.linkedin.com/in/lalkrishna-work/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/lalkrishna-job" target="_blank">GitHub</a>
-        <a href="Lal_Krishna_Resume.pdf" target="_blank">Resume (PDF)</a>
+        <div class="hero-actions">
+            <a class="button" href="Lal_Krishna_Resume.pdf" target="_blank">Download Resume</a>
+            <a class="button secondary" href="https://www.linkedin.com/in/lalkrishna-work/" target="_blank">LinkedIn</a>
+            <a class="button secondary" href="https://github.com/lalkrishna-job" target="_blank">GitHub</a>
+        </div>
     </div>
 
-    <!-- SUMMARY -->
+    <!-- ABOUT -->
     <section>
-        <h2>Professional Summary</h2>
-        <p>
-            Senior Software Development Engineer in Test (SDET) with 10+ years of experience
-            designing, building, and scaling automation solutions for high-traffic web,
-            mobile, and API-driven systems.
-            <br><br>
-            Deep expertise in backend API automation using Python and Robot Framework,
-            along with frontend UI automation using Selenium and Playwright.
-            Currently working at Flipkart, contributing to quality engineering for
-            complex microservices, experimentation platforms, and large-scale
-            e-commerce systems.
-        </p>
+        <h3 class="section-title">Professional Summary</h3>
+        <div class="card">
+            Senior SDET with strong ownership of backend microservices quality
+            across high-traffic e-commerce platforms. Currently at Flipkart,
+            driving automation-first strategies for promotions, growth systems,
+            and experimentation-driven features. Known for deep collaboration
+            with Product, Engineering, and DevOps teams to ensure fast, stable,
+            and reliable releases.
+        </div>
     </section>
 
-    <!-- CORE EXPERTISE -->
+    <!-- SKILLS -->
     <section>
-        <h2>Core Expertise</h2>
-        <ul>
-            <li><strong>Backend & API Automation:</strong> Python, Robot Framework, REST API testing, microservices quality</li>
-            <li><strong>UI Automation:</strong> Selenium, Playwright, Web & Mobile Web testing</li>
-            <li><strong>Quality Engineering:</strong> End-to-end test design, regression strategy, CI/CD-aligned testing</li>
-            <li><strong>Tools & Platforms:</strong> Git, GitHub, VS Code, Postman, Charles Proxy, Statsig</li>
-        </ul>
+        <h3 class="section-title">Core Expertise</h3>
+        <div class="grid grid-3">
+            <div class="card skill-group">
+                <h3>Backend & API Automation</h3>
+                <ul>
+                    <li>Python, Robot Framework</li>
+                    <li>REST API validation</li>
+                    <li>Microservices quality</li>
+                </ul>
+            </div>
+            <div class="card skill-group">
+                <h3>UI Automation</h3>
+                <ul>
+                    <li>Selenium (Web)</li>
+                    <li>Playwright</li>
+                    <li>Web & Mobile Web</li>
+                </ul>
+            </div>
+            <div class="card skill-group">
+                <h3>Quality Engineering</h3>
+                <ul>
+                    <li>CI/CD aligned testing</li>
+                    <li>A/B experimentation</li>
+                    <li>Release sign-off</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
-    <!-- PROJECTS / IMPACT -->
+    <!-- PROJECTS -->
     <section>
-        <h2>Impact Highlights</h2>
-        <ul>
-            <li>
-                <strong>Backend Automation – Promotions Microservices (Flipkart)</strong><br>
-                Owned backend quality for offer creation and offer-serving microservices,
-                automating complex business rules and workflows using Robot Framework with Python.
-            </li>
-
-            <li>
-                <strong>Experimentation & Growth Quality Engineering</strong><br>
-                Validated A/B experiments across Web, Android, iOS, and mSite platforms,
-                collaborating with Product teams using Statsig and automating critical flows
-                using Playwright.
-            </li>
-
-            <li>
-                <strong>CI/CD-Aligned Automation Strategy</strong><br>
-                Integrated automation suites with CI pipelines and acted as quality owner
-                for release sign-off on high-impact production features.
-            </li>
-        </ul>
+        <h3 class="section-title">Impact Highlights</h3>
+        <div class="grid grid-2">
+            <div class="card">
+                <div class="role">Backend Automation – Promotions</div>
+                <p class="role-desc">
+                    Owned backend quality for offer creation and offer-serving
+                    microservices used across Flipkart product, cart, and
+                    checkout journeys.
+                </p>
+            </div>
+            <div class="card">
+                <div class="role">Experimentation & Growth Quality</div>
+                <p class="role-desc">
+                    Validated A/B experiments across Web, Android, iOS, and mSite
+                    platforms using Statsig with automation using Playwright.
+                </p>
+            </div>
+            <div class="card">
+                <div class="role">CI/CD Automation</div>
+                <p class="role-desc">
+                    Integrated automation suites into CI pipelines to enable
+                    fast, repeatable, and reliable release validation.
+                </p>
+            </div>
+        </div>
     </section>
 
     <!-- EXPERIENCE -->
     <section>
-        <h2>Experience</h2>
-        <ul>
-            <li>
-                <strong>Flipkart — Senior SDET (2021 – Present)</strong><br>
-                Backend microservices quality ownership across Promotions and Growth Engineering teams.
-            </li>
-
-            <li>
-                <strong>Swiggy — Senior QA Engineer (2019 – 2021)</strong><br>
-                Frontend quality for Web & Android platforms, Selenium automation with Python.
-            </li>
-
-            <li>
-                <strong>Earlier Roles</strong><br>
-                QA roles across analytics, web, mobile, and enterprise platforms,
-                building a strong foundation in system and integration testing.
-            </li>
-        </ul>
+        <h3 class="section-title">Experience</h3>
+        <div class="grid grid-2">
+            <div class="card">
+                <div class="role">Senior SDET</div>
+                <div class="company">Flipkart · 2021 – Present</div>
+                <p class="role-desc">
+                    Backend microservices quality ownership, promotions systems,
+                    experimentation platforms, and automation-first testing
+                    strategies.
+                </p>
+            </div>
+            <div class="card">
+                <div class="role">Senior QA Engineer</div>
+                <div class="company">Swiggy · 2019 – 2021</div>
+                <p class="role-desc">
+                    Frontend quality for consumer-facing web and Android apps,
+                    driving transition from manual to automation-driven testing.
+                </p>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>
-            © 2026 Lal Krishna K B ·
-            <a href="https://www.linkedin.com/in/lalkrishna-work/" target="_blank">LinkedIn</a> ·
-            <a href="https://github.com/lalkrishna-job" target="_blank">GitHub</a> ·
-            Bengaluru, India
-        </p>
+        © 2026 Lal Krishna K B ·
+        <a href="https://www.linkedin.com/in/lalkrishna-work/" target="_blank">LinkedIn</a> ·
+        <a href="https://github.com/lalkrishna-job" target="_blank">GitHub</a> ·
+        <a href="mailto:lalkrishna.job@gmail.com">Email</a>
     </footer>
 
 </div>
