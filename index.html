@@ -1,170 +1,362 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Lal Krishna — Modern UI Kit Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lal Krishna K B | Senior SDET</title>
 
-<!-- AOS CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 
-<style>
-:root{
-  --bg-deep:#05060A;
-  --panel: rgba(255,255,255,0.04);
-  --glass-edge: rgba(255,255,255,0.10);
-  --muted:#A8B0C7;
-  --main:#E7ECFF;
-  --accent:#7C8CFF;
-  --accent2:#6EE7FF;
-  --glow: rgba(124,140,255,0.26);
-}
+    <style>
+        /* ===================== DESIGN TOKENS ===================== */
+        :root {
+            --bg: #07090f;
+            --glass: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.14);
+            --text-main: #f6f7fb;
+            --text-muted: #b6bccd;
+            --accent: #8b9cff;
+            --accent-2: #6ee7ff;
+            --glow: rgba(139, 156, 255, 0.45);
+        }
 
-/* base */
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  min-height:100vh;
-  background:
-    radial-gradient(900px 520px at 12% 10%, rgba(124,140,255,0.18), transparent 60%),
-    radial-gradient(700px 420px at 88% 20%, rgba(110,231,255,0.12), transparent 60%),
-    var(--bg-deep);
-  color:var(--main);
-  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
 
-/* noise */
-body::after{
-  content:"";
-  position:fixed; inset:0; z-index:0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23t)' opacity='0.018'/%3E%3C/svg%3E");
-  pointer-events:none;
-}
+        /* ===================== RESET ===================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* container */
-.container{position:relative;z-index:1;max-width:1100px;margin:auto;padding:80px 20px 80px}
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* glass card */
-.glass-card{
-  position:relative;
-  background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
-  border-radius:14px;
-  padding:20px;
-  border:1px solid rgba(255,255,255,0.045);
-  backdrop-filter: blur(15px);
-}
-.glass-card::after{
-  content:""; position:absolute; inset:-1px; border-radius:inherit;
-  background:linear-gradient(90deg, rgba(124,140,255,0.12), rgba(110,231,255,0.06));
-  -webkit-mask: linear-gradient(#000 0 0) content-box;
-  mask-composite: exclude; pointer-events:none; opacity:0.95;
-}
 
-/* bento */
-.bento{display:grid; gap:18px; grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(120px, auto)}
-.bento>.a{ grid-column: 1 / span 7; grid-row:1 }
-.bento>.b{ grid-column: 8 / span 5; grid-row:1 / span 2 }
-.bento>.c{ grid-column: 1 / span 4; grid-row:2 }
-.bento>.d{ grid-column: 5 / span 3; grid-row:2 }
-.bento>.e{ grid-column: 9 / span 4; grid-row:3 }
+        /* ===================== BACKGROUND ART ===================== */
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(1200px 600px at 15% 10%, rgba(139, 156, 255, 0.22), transparent 60%),
+                radial-gradient(900px 500px at 85% 20%, rgba(110, 231, 255, 0.18), transparent 60%),
+                radial-gradient(800px 500px at 50% 90%, rgba(139, 156, 255, 0.14), transparent 60%),
+                var(--bg);
+            color: var(--text-main);
+            font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+        }
 
-/* responsive */
-@media(max-width:880px){
-  .bento{grid-template-columns:1fr}
-  .bento>*>*{grid-column:auto!important;grid-row:auto!important}
-}
 
-/* tilt profile */
-.profile-wrap{width:160px;margin:auto;border-radius:12px;overflow:hidden}
+        /* Noise texture (luxury feel) */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
 
-/* small utilities */
-.h1{font-size: clamp(36px, 5.5vw, 56px); font-weight:800; margin-bottom:8px}
-.p-muted{color:var(--muted); max-width:760px; margin:auto}
 
-/* card padding / visuals */
-.project-card{ padding:22px; border-radius:12px; transition:transform .28s ease, box-shadow .28s; box-shadow: 0 6px 20px rgba(3,6,10,0.45)}
-.project-card:hover{transform:translateY(-6px); box-shadow: 0 26px 80px rgba(3,6,10,0.6)}
-</style>
+        /* ===================== LAYOUT ===================== */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: auto;
+            padding: 120px 24px 80px;
+        }
+
+
+        /* ===================== HERO ===================== */
+        .hero {
+            text-align: center;
+            margin-bottom: 160px;
+        }
+
+
+        .hero h1 {
+            font-size: clamp(46px, 6vw, 72px);
+            font-weight: 900;
+            letter-spacing: -0.035em;
+            margin-bottom: 18px;
+        }
+
+
+        .hero h2 {
+            font-size: clamp(18px, 2.5vw, 22px);
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 34px;
+        }
+
+
+        .hero p {
+            max-width: 860px;
+            margin: auto;
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+
+
+        /* ===================== ACTION BUTTONS ===================== */
+        .actions {
+            margin-top: 46px;
+        }
+
+
+        .button {
+            display: inline-block;
+            padding: 15px 34px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #06080f;
+            font-weight: 800;
+            text-decoration: none;
+            margin: 10px;
+            box-shadow: 0 20px 60px var(--glow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+
+        .button.secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
+            box-shadow: none;
+        }
+
+
+        .button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 90px var(--glow);
+        }
+
+
+        /* ===================== SECTIONS ===================== */
+        section {
+            margin-bottom: 130px;
+        }
+
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 48px;
+        }
+
+
+        /* ===================== GLASS CARD (ADVANCED) ===================== */
+        .card {
+            position: relative;
+            background: linear-gradient(180deg,
+                    rgba(255, 255, 255, 0.09),
+                    rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(22px);
+            border: 1px solid var(--glass-border);
+            border-radius: 26px;
+            padding: 40px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+
+        /* light edge */
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(120deg, transparent, rgba(139, 156, 255, 0.6), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7);
+        }
+
+
+        /* ===================== GRID ===================== */
+        .grid {
+            display: grid;
+            gap: 28px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+
+        /* ===================== TEXT ===================== */
+        .role {
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .company {
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .desc {
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            margin-top: 160px;
+            padding-top: 40px;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 
 <body>
 
-<div class="container">
 
-  <header style="text-align:center;margin-bottom:40px">
-    <div class="h1">Lal Krishna K B</div>
-    <div style="font-weight:600;color:var(--muted)">Senior SDET • Backend API Automation • Microservices Quality</div>
-    <p class="p-muted" style="margin-top:18px">10+ years building automation-first quality at scale — backend API automation with Python & Robot Framework, experimentation validation, and CI-integrated testing.</p>
-  </header>
+    <div class="container">
 
-  <!-- Bento grid -->
-  <div class="bento" aria-label="Projects grid">
 
-    <div class="a glass-card" data-aos="fade-up">
-      <div style="display:flex;gap:14px;align-items:center">
-        <div style="flex:1">
-          <h3 style="margin:0 0 8px">Backend Automation Framework</h3>
-          <p style="margin:0;color:var(--muted)">Scalable Robot Framework architecture for microservices testing, CI integration, and data-driven API validations.</p>
+        <!-- HERO -->
+        <div class="hero">
+            <h1>Lal Krishna K B</h1>
+            <h2>Senior Software Development Engineer in Test (SDET)</h2>
+            <p>
+                10+ years architecting automation-first quality for large-scale
+                microservices, experimentation platforms, and high-traffic consumer systems.
+                Specialized in backend API automation, CI/CD-aligned testing, and
+                engineering-driven quality ownership.
+            </p>
+
+
+            <div class="actions">
+                <a class="button" href="Lal_Krishna_Resume.pdf" target="_blank">Download Resume</a>
+                <a class="button secondary" href="https://www.linkedin.com/in/lalkrishna-work/"
+                    target="_blank">LinkedIn</a>
+                <a class="button secondary" href="https://github.com/lalkrishna-job" target="_blank">GitHub</a>
+            </div>
         </div>
-      </div>
+
+
+        <!-- SUMMARY -->
+        <section>
+            <div class="section-title">Professional Summary</div>
+            <div class="card">
+                Senior SDET currently at Flipkart, owning backend microservices quality for
+                promotions and experimentation systems. Strong advocate of automation-first
+                strategies, CI/CD-aligned testing, and deep collaboration with Product,
+                Engineering, and DevOps teams to deliver fast, stable, and reliable releases
+                at scale.
+            </div>
+        </section>
+
+
+        <!-- CORE EXPERTISE -->
+        <section>
+            <div class="section-title">Core Expertise</div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="role">Backend & API Automation</div>
+                    <p class="desc">Python, Robot Framework, REST API validation, microservices quality</p>
+                </div>
+                <div class="card">
+                    <div class="role">UI Automation</div>
+                    <p class="desc">Selenium, Playwright, Web & Mobile Web automation</p>
+                </div>
+                <div class="card">
+                    <div class="role">Quality Engineering</div>
+                    <p class="desc">CI/CD pipelines, experimentation systems, release sign-off</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- IMPACT -->
+        <section>
+            <div class="section-title">Impact Highlights</div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="role">Backend Automation – Promotions</div>
+                    <p class="desc">
+                        Owned backend quality for offer creation and offer-serving
+                        microservices used across Flipkart product, cart, and checkout journeys.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="role">Experimentation & Growth Quality</div>
+                    <p class="desc">
+                        Validated A/B experiments across Web, Android, iOS, and mSite platforms,
+                        ensuring correctness, data integrity, and production readiness.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- EXPERIENCE -->
+        <section>
+            <div class="section-title">Experience</div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="role">Senior SDET</div>
+                    <div class="company">Flipkart · 2021 – Present</div>
+                    <p class="desc">
+                        Backend microservices quality ownership, experimentation platforms,
+                        promotions systems, and automation-first engineering practices.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="role">Senior QA Engineer</div>
+                    <div class="company">Swiggy · 2019 – 2021</div>
+                    <p class="desc">
+                        Frontend quality for consumer-facing web and Android applications,
+                        driving transition from manual to automation-driven testing.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <footer>
+            © 2026 Lal Krishna K B ·
+            <a href="https://www.linkedin.com/in/lalkrishna-work/" target="_blank">LinkedIn</a> ·
+            <a href="https://github.com/lalkrishna-job" target="_blank">GitHub</a> ·
+            <a href="mailto:lalkrishna.job@gmail.com">Email</a>
+        </footer>
+
+
     </div>
 
-    <div class="b glass-card" data-aos="fade-up" data-aos-delay="90">
-      <h4 style="margin:0 0 8px">Experiments & Growth</h4>
-      <p style="margin:0;color:var(--muted)">Automated experiment validation across devices using Playwright + Statsig tooling.</p>
-    </div>
-
-    <div class="c project-card glass-card" data-aos="fade-up" data-aos-delay="160">
-      <h4 style="margin:0 0 8px">CI Pipelines</h4>
-      <p style="margin:0;color:var(--muted)">Reliable CI jobs running API suites, gating releases and enabling fast rollouts.</p>
-    </div>
-
-    <div class="d project-card glass-card" data-aos="fade-up" data-aos-delay="220">
-      <h4 style="margin:0 0 8px">REST API Automation</h4>
-      <p style="margin:0;color:var(--muted)">Auth flows, strict schema validation, negative test coverage and contract stability checks.</p>
-    </div>
-
-    <div class="e glass-card" data-aos="fade-up" data-aos-delay="300">
-      <h4 style="margin:0 0 8px">Observability & Debugging</h4>
-      <p style="margin:0;color:var(--muted)">Integrations for logs/metrics checks in pipelines and smoke validations pre-release.</p>
-    </div>
-
-  </div>
-
-  <!-- Profile + small projects row -->
-  <section style="margin-top:48px">
-    <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap">
-      <div style="flex:0 0 200px;width:200px">
-        <div class="profile-wrap glass-card tilt" data-tilt data-tilt-max="9" data-tilt-speed="500" data-tilt-glare="true" data-tilt-max-glare="0.12">
-          <!-- Use your image path -->
-          <img src="your-photo.jpg" alt="Lal Krishna" style="width:100%;height:auto;display:block;border-radius:10px">
-        </div>
-      </div>
-
-      <div style="flex:1;min-width:260px">
-        <div class="glass-card">
-          <h3 style="margin:0 0 8px">Professional Summary</h3>
-          <p style="margin:0;color:var(--muted)">Senior SDET at Flipkart — backend microservices quality, automation-first shipping, experimentation validation, and CI-driven release safety. Collaborates with Product and Backend engineering for fast, reliable releases.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<!-- AOS lib -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<!-- VanillaTilt -->
-<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
-
-<script>
-  // AOS init
-  AOS.init({ duration:700, easing:'ease-out-cubic', once:true, offset:120 });
-
-  // VanillaTilt auto-init is invoked by data-tilt attributes (or init manually)
-  // VanillaTilt.init(document.querySelectorAll(".tilt"), { max:9, speed:500, glare:true, "max-glare":0.12, scale:1.03 });
-</script>
 
 </body>
+
 </html>
